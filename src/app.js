@@ -6,7 +6,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 //Log request information to the console
-app.use(express.logger('dev'))
+app.use(express.logger('dev'));
 
 app.get('/', function(req, res) {
 	res.render('hello');	
