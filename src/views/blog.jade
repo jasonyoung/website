@@ -1,0 +1,14 @@
+doctype 5
+html(lang="en")
+    head
+        title= "Blog"
+    body
+        h1 Welcome to the blog
+        form(name="input", action="/newpost", method="post")
+            h2 Title
+            input(type="text", name="title")
+
+            h2 Body
+            textarea(name="body", cols=120, rows=20)
+            
+            input(type="submit", value="Submit")

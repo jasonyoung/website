@@ -12,5 +12,9 @@ app.get('/', function(req, res) {
 	res.render('hello');	
 });
 
+app.get('/blog', function(req, res) {
+	res.render('blog');
+});
+
 app.listen(3000);
 console.log('Listening on port 3000...');
