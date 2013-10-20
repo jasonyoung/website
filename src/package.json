@@ -1,0 +1,32 @@
+{
+  "name": "Website",
+  "version": "0.0.0",
+  "description": "Simple website platform",
+  "private": true,
+  "main": "app.js",
+  "dependencies": {
+    "express": "3.4.*",
+    "jade": "0.35.*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonyoung/website.git"
+  },
+  "keywords": [
+    "website",
+    "blog"
+  ],
+  "author": "Jason Young",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/jasonyoung/website/issues"
+  },
+  "engines" :
+  {
+    "node": ">=0.10.15"
+  }
+}
