@@ -1,0 +1,14 @@
+doctype 5
+html(lang="en")
+    head
+        title= "Start new pool | Baby Pool"
+    body
+        h1 Start a New Pool
+        form(name="newPool", action="/newpool", method="post")
+            key Your name
+            input(type="text", name="name")
+
+            key Your mobile number (used to submit updates)
+            input(type="text", name="mobileNumber")
+            
+            input(type="submit", value="Create Pool")

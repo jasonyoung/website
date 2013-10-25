@@ -9,11 +9,15 @@ app.set('view engine', 'jade');
 app.use(express.logger('dev'));
 
 app.get('/', function(req, res) {
-	res.render('hello');	
+	res.render('home');	
 });
 
-app.get('/blog', function(req, res) {
-	res.render('blog');
+app.get('/newpool', function(req, res) {
+	res.render('newPool');
+});
+
+app.post('/newpool', function(req, res) {
+	res.send('Success!!');
 });
 
 app.listen(3000);
