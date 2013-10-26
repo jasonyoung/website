@@ -35,7 +35,18 @@ MongoClient.connect("mongodb://localhost:27017/babyPoolDB", function (err, db) {
         console.log('Your name:');
         console.log(req.body.userName);
 
-        res.send('Success!!');
+        var pool = {
+            parentName : req.body.userName,
+            babyName : req.body.babyName,
+            emailAddress :  req.body.emailAddress,
+            dueDate : req.body.dueDate
+        };
+
+        db.collection('pools').insert(pool, {safe : true}, function(err, docs) {
+            console.log('Inserted:');
+            console.log(docs);
+            res.send('Success!!');
+        });
     });
 
     app.get('/joinpool', function (req, res) {
