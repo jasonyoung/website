@@ -1,3 +1,2 @@
-website
+The Baby Pool
 =======
-Simple blog
