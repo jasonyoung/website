@@ -1,15 +1,23 @@
 var express = require('express');
+var swig = require('swig');
 var app = express();
 
-//Tell Express to use the Jade templating engine
+app.engine('html', swig.renderFile);
+
+//Tell Express to use the Swig templating engine
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'html');
+
+app.set('view cache', false);
+swig.setDefaults({ cache: false });
 
 //Log request information to the console
 app.use(express.logger('dev'));
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', function(req, res) {
-	res.render('home');	
+	res.render('home');
 });
 
 app.get('/newpool', function(req, res) {
