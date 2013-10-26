@@ -6,6 +6,10 @@ var MongoClient = require('mongodb');
 MongoClient.connect("mongodb://localhost:27017/babyPoolDB", function (err, db) {
     if (err) throw err;
 
+    process.on('SIGTERM', function() {
+        db.close();
+    });
+
     console.log('Connected!!');
 
     app.engine('html', swig.renderFile);
@@ -45,7 +49,7 @@ MongoClient.connect("mongodb://localhost:27017/babyPoolDB", function (err, db) {
         db.collection('pools').insert(pool, {safe : true}, function(err, docs) {
             console.log('Inserted:');
             console.log(docs);
-            res.send('Success!!');
+            res.json({ result: true })
         });
     });
 

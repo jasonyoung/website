@@ -13,6 +13,7 @@
     <![endif]-->
 </head>
 <body>
+<div id="alert" class="alert alert-success">New Pool Created</div>
 
 <div class="jumbotron">
     <div class="container">
@@ -20,7 +21,7 @@
     </div>
 </div>
 
-<form class="form-horizontal" action="newPool" method="post">
+<form class="form-horizontal" id="newPoolForm" action="newPool" method="post">
     <div class="form-group">
         <div class="row">
             <label for="userName" class="col-lg-2 control-label">Your Name</label>
@@ -31,10 +32,10 @@
         </div>
 
         <div class="row">
-            <label for="email" class="col-lg-2 control-label">Email</label>
+            <label for="emailAdress" class="col-lg-2 control-label">Email</label>
 
             <div class="col-lg-2">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                <input type="email" class="form-control" name="emailAddress" id="emailAdress" placeholder="Email">
             </div>
         </div>
 
@@ -55,7 +56,7 @@
         </div>
     </div>
     <div class="row">
-    <input type="submit" class="btn btn-primary col-lg-2 col-md-offset-2" value="Start pool"/>
+    <input type="button" id="saveNewPool" class="btn btn-primary col-lg-2 col-md-offset-2" value="Start Pool"/>
     </div>
 </form>
 
@@ -63,5 +64,7 @@
 <script src="//code.jquery.com/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/scripts/common.js"></script>
+<script src="/scripts/newPool.js"></script>
 </body>
 </html>
