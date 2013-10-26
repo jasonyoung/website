@@ -28,5 +28,9 @@ app.post('/newpool', function(req, res) {
 	res.send('Success!!');
 });
 
+app.get('/joinpool', function(req, res) {
+    res.render('joinPool');
+});
+
 app.listen(3000);
 console.log('Listening on port 3000...');

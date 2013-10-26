@@ -1,14 +1,38 @@
-doctype 5
-html(lang="en")
-    head
-        title= "Start new pool | Baby Pool"
-    body
-        h1 Start a New Pool
-        form(name="newPool", action="/newpool", method="post")
-            key Your name
-            input(type="text", name="name")
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Start a new Baby Pool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-            key Your mobile number (used to submit updates)
-            input(type="text", name="mobileNumber")
-            
-            input(type="submit", value="Create Pool")
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/bootstrap/assets/js/html5shiv.js"></script>
+    <script src="/bootstrap/assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Start New Baby Pool</h1>
+    </div>
+</div>
+
+<form class="form-horizontal" role="form" action="newPool" method="post">
+    <div class="form-group">
+        <label for="email" class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
+            <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary col-lg-2" value="Start pool"/>
+   </form>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
