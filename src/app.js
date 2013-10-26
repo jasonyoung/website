@@ -15,6 +15,7 @@ swig.setDefaults({ cache: false });
 app.use(express.logger('dev'));
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.bodyParser());
 
 app.get('/', function(req, res) {
 	res.render('home');
@@ -25,6 +26,9 @@ app.get('/newpool', function(req, res) {
 });
 
 app.post('/newpool', function(req, res) {
+    console.log('Your name:');
+    console.log(req.body.userName);
+
 	res.send('Success!!');
 });
 
