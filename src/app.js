@@ -1,62 +1,82 @@
-var express = require('express');
-var swig = require('swig');
-var app = express();
 var MongoClient = require('mongodb');
+var swig = require('swig');
+var express = require('express');
+var app = express();
 
-MongoClient.connect("mongodb://localhost:27017/babyPoolDB", function (err, db) {
-    if (err) throw err;
+var connectToDB = function(callback) {
+	MongoClient.connect("mongodb://localhost:27017/babyPoolDB", function(err, db) {
+		if (err) {
+			callback(err);
+		}
 
-    process.on('SIGTERM', function() {
-        db.close();
-    });
+		console.log('Successfully connected to DB');
 
-    console.log('Connected!!');
+		process.on('SIGTERM', function() {
+			db.close();
+		});
 
-    app.engine('html', swig.renderFile);
+		process.nextTick(function() {
+			callback(null, db)
+		});
+	});
+};
 
-    //Tell Express to use the Swig templating engine
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'html');
+var init = function(err, db) {
+	if (err) throw err;
 
-    app.set('view cache', false);
-    swig.setDefaults({ cache: false });
+	app.engine('html', swig.renderFile);
 
-    //Log request information to the console
-    app.use(express.logger('dev'));
+	//Tell Express to use the Swig templating engine
+	app.set('views', __dirname + '/views');
+	app.set('view engine', 'html');
 
-    app.use(express.static(__dirname + '/public'));
-    app.use(express.bodyParser());
+	app.set('view cache', false);
+	swig.setDefaults({
+		cache: false
+	});
 
-    app.get('/', function (req, res) {
-        res.render('home');
-    });
+	//Log request information to the console
+	app.use(express.logger('dev'));
 
-    app.get('/newpool', function (req, res) {
-        res.render('newPool');
-    });
+	app.use(express.static(__dirname + '/public'));
+	app.use(express.bodyParser());
 
-    app.post('/newpool', function (req, res) {
-        console.log('Your name:');
-        console.log(req.body.userName);
+	app.get('/', function(req, res) {
+		res.render('home');
+	});
 
-        var pool = {
-            parentName : req.body.userName,
-            babyName : req.body.babyName,
-            emailAddress :  req.body.emailAddress,
-            dueDate : req.body.dueDate
-        };
+	app.get('/newpool', function(req, res) {
+		res.render('newPool');
+	});
 
-        db.collection('pools').insert(pool, {safe : true}, function(err, docs) {
-            console.log('Inserted:');
-            console.log(docs);
-            res.json({ result: true })
-        });
-    });
+	app.post('/newpool', function(req, res) {
+		console.log('Your name:');
+		console.log(req.body.userName);
 
-    app.get('/joinpool', function (req, res) {
-        res.render('joinPool');
-    });
+		var pool = {
+			parentName: req.body.userName,
+			babyName: req.body.babyName,
+			emailAddress: req.body.emailAddress,
+			dueDate: req.body.dueDate
+		};
 
-    app.listen(3000);
-    console.log('Listening on port 3000...');
-});
+		db.collection('pools').insert(pool, {
+			safe: true
+		}, function(err, docs) {
+			console.log('Inserted:');
+			console.log(docs);
+			res.json({
+				result: true
+			})
+		});
+	});
+
+	app.get('/joinpool', function(req, res) {
+		res.render('joinPool');
+	});
+
+	app.listen(3000);
+	console.log('Listening on port 3000...');
+};
+
+connectToDB(init);
