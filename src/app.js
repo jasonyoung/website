@@ -1,4 +1,4 @@
-var MongoClient = require('mongodb');
+var MongoClient = require('mongodb').MongoClient;
 var swig = require('swig');
 var express = require('express');
 var app = express();
