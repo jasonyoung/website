@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./src", "/home/vagrant/workspace"
 
   config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 28017, host: 28017
 
   config.berkshelf.enabled = true
 
