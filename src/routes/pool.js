@@ -1,24 +1,28 @@
 module.exports = function PoolHandler(db) {
-	this.handleNewPool = function(req, res) {
-		console.log('Your name:');
-		console.log(req.body.userName);
+	var pools = db.collection('pools');
 
-		var pool = {
+	this.handleNewPool = function(req, res) {		
+		var newPool = {
 			parentName: req.body.userName,
 			babyName: req.body.babyName,
 			emailAddress: req.body.emailAddress,
 			dueDate: req.body.dueDate
 		};
 
-		db.collection('pools').insert(pool, {
+		var options = {
 			safe: true
-		}, function(err, docs) {
+		};
+
+		var poolCreatedHandler = function(err, docs) {
 			console.log('Inserted:');
 			console.log(docs);
+
 			res.json({
 				result: true
 			});
-		});
+		};
+
+		pools.insert(newPool, options, poolCreatedHandler);
 	};
 
 	this.displayNewPoolPage = function(req, res) {
