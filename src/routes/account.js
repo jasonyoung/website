@@ -1,5 +1,6 @@
 module.exports = function AccountHander(db) {
 	"use strict";
+	
 	var accounts = db.collection("accounts");
 
 	this.handleNewAccount = function(req, res) {
@@ -7,7 +8,7 @@ module.exports = function AccountHander(db) {
 		var confirmPassword = req.body.confirmPassword;
 
 		if (password != confirmPassword) {
-			res.send("Invalid Password - Fool")
+			res.send("Invalid Password - Fool");
 			return;
 		};
 

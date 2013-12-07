@@ -59,8 +59,6 @@ var init = function(err, db) {
 		done(null, user._id.toString());
 	});
 
-
-
 	// Setup application routes.
 	routes(app, db, passport);
 
