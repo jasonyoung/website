@@ -13,6 +13,42 @@
     <![endif]-->
 </head>
 <body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container"><!-- Collapsable nav bar -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <!-- Start of the nav bar content -->
+                <div class="nav-collapse"><!-- Other nav bar content -->
+                       <!-- The drop down menu -->
+                    <ul class="nav pull-right">
+                         <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                                <form action="/login" method="post">
+                                    <div>
+                                        <label class="control-label">Username:</label>
+                                        <input class="form-control" type="text" name="username"/>
+                                    </div>
+                                    <div>
+                                        <label class="control-label">Password:</label>
+                                        <input class="form-control" type="password" name="password"/>
+                                    </div>
+                                    <div>
+                                        <input class="btn btn-primary" type="submit" value="Log In"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div class="jumbotron">
     <div class="container">
         <h1>WELCOME</h1>
