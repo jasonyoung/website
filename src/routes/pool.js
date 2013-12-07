@@ -31,17 +31,14 @@ module.exports = function PoolHandler(db) {
 
 	this.displayJoinPoolPage = function(req, res) {
 		pools.find().toArray(function(error, results) {
-			var existingPools = [];
-
-			for (var i = 0; i < results.length; i++) {
-				var pool = {
-					id : results[i]._id.toString(),
-					babyName : results[i].babyName
-				};
-
-				existingPools.push(pool);
+			var createPool = function (data) {
+				return {
+					id : data._id.toString(),
+					babyName : data.babyName
+				}
 			};
 
+			var existingPools = results.map(createPool);
 			res.render('joinPool', { "pools" : existingPools });
 		});		
 	};
