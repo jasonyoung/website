@@ -1,0 +1,13 @@
+Review Vagrant Docs
+
+To Destroy
+vagrant destroy
+
+To Start VM
+vagrant up
+
+To Stop VM
+vagrant halt / suspend
+
+Vagrant Help
+vagrant help
