@@ -20,22 +20,13 @@
 
     <div class="container">
     <h2>Select an existing pool to join</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Baby Name</th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for pool in pools %}
-                    <tr>
-                        <td>{{ pool.id }}</td>
-                        <td>{{ pool.babyName }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <ul class="list-group">
+            {% for pool in pools %}
+                <li class="list-group-item">
+                    {{ pool.babyName }}
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
     <div class="container">
