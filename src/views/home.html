@@ -13,41 +13,63 @@
     <![endif]-->
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container"><!-- Collapsable nav bar -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <!-- Start of the nav bar content -->
-                <div class="nav-collapse"><!-- Other nav bar content -->
-                       <!-- The drop down menu -->
-                    <ul class="nav pull-right">
-                         <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-                            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                                <form action="/login" method="post">
-                                    <div>
-                                        <label class="control-label">Username:</label>
-                                        <input class="form-control" type="text" name="username"/>
-                                    </div>
-                                    <div>
-                                        <label class="control-label">Password:</label>
-                                        <input class="form-control" type="password" name="password"/>
-                                    </div>
-                                    <div>
-                                        <input class="btn btn-primary" type="submit" value="Log In"/>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
     </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <form action="/register" method="post">
+                        <div>
+                            <label class="control-label">Username:</label>
+                            <input class="form-control" type="text" name="username"/>
+                        </div>
+                        <div>
+                            <label class="control-label">Password:</label>
+                            <input class="form-control" type="password" name="password"/>
+                        </div>
+                        <div>
+                            <label class="control-label">Confirm:</label>
+                            <input class="form-control" type="password" name="confirmPassword"/>
+                        </div>
+                        <div>
+                            <input class="btn btn-primary" type="submit" value="Sign Up"/>
+                        </div>
+                    </form>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <form action="/login" method="post">
+                        <div>
+                            <label class="control-label">Username:</label>
+                            <input class="form-control" type="text" name="username"/>
+                        </div>
+                        <div>
+                            <label class="control-label">Password:</label>
+                            <input class="form-control" type="password" name="password"/>
+                        </div>
+                        <div>
+                            <input class="btn btn-primary" type="submit" value="Log In"/>
+                        </div>
+                    </form>
+                </ul>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
 
 <div class="jumbotron">
     <div class="container">
