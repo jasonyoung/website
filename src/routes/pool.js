@@ -30,6 +30,19 @@ module.exports = function PoolHandler(db) {
 	};
 
 	this.displayJoinPoolPage = function(req, res) {
-		res.render('joinPool', { pools: [{id : 1, babyName : "Paul"}]});
+		pools.find().toArray(function(error, results) {
+			var existingPools = [];
+
+			for (var i = 0; i < results.length; i++) {
+				var pool = {
+					id : results[i]._id.toString(),
+					babyName : results[i].babyName
+				};
+
+				existingPools.push(pool);
+			};
+
+			res.render('joinPool', { "pools" : existingPools });
+		});		
 	};
 };
