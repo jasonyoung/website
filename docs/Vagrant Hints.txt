@@ -11,3 +11,6 @@ vagrant halt / suspend
 
 Vagrant Help
 vagrant help
+
+To open shell on VM
+vagrant ssh
