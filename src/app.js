@@ -55,6 +55,11 @@ var init = function(err, db) {
 	app.use(passport.initialize());
 
 	passport.use(new LocalStrategy(authentication(db)));
+	passport.serializeUser(function(user, done) {
+		done(null, user._id.toString());
+	});
+
+
 
 	// Setup application routes.
 	routes(app, db, passport);
