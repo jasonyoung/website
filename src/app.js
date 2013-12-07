@@ -3,6 +3,9 @@ var swig = require('swig');
 var express = require('express');
 var app = express();
 var routes = require('./routes');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var authentication = require('./authentication');
 
 // Function to connect to the database.
 var connectToDB = function(callback) {
@@ -30,7 +33,7 @@ var init = function(err, db) {
 	if (err) throw err;
 
 	// Configure templating engine.
-	app.engine('html', swig.renderFile);	
+	app.engine('html', swig.renderFile);
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'html');
 
@@ -49,8 +52,17 @@ var init = function(err, db) {
 	// Express middleware to populate 'req.body' so we can access POST variables.
 	app.use(express.bodyParser());
 
+	app.use(passport.initialize());
+
+	passport.use(new LocalStrategy(authentication(db)));
+	passport.serializeUser(function(user, done) {
+		done(null, user._id.toString());
+	});
+
+
+
 	// Setup application routes.
-	routes(app, db);	
+	routes(app, db, passport);
 
 	app.listen(3000);
 	console.log('Listening on port 3000...');
