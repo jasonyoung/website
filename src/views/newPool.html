@@ -1,70 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Start a new Baby Pool</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+{% extends "layout.html" %}
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/bootstrap/assets/js/html5shiv.js"></script>
-    <script src="/bootstrap/assets/js/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-<div id="alert" class="alert alert-success">New Pool Created</div>
+{% block content %}
+    <div id="alert" class="alert alert-success">New Pool Created</div>
 
-<div class="jumbotron">
-    <div class="container">
-        <h1>Start New Baby Pool</h1>
-    </div>
-</div>
-
-<form class="form-horizontal" id="newPoolForm" action="newPool" method="post">
-    <div class="form-group">
-        <div class="row">
-            <label for="userName" class="col-lg-2 control-label">Your Name</label>
-
-            <div class="col-lg-2">
-                <input type="text" class="form-control" name="userName" id="userName" placeholder="Joe Bloggs">
-            </div>
-        </div>
-
-        <div class="row">
-            <label for="emailAdress" class="col-lg-2 control-label">Email</label>
-
-            <div class="col-lg-2">
-                <input type="email" class="form-control" name="emailAddress" id="emailAdress" placeholder="Email">
-            </div>
-        </div>
-
-        <div class="row">
-            <label for="babyName" class="col-lg-2 control-label">Your Baby's Name</label>
-
-            <div class="col-lg-2">
-                <input type="text" class="form-control" name="babyName" id="babyName" placeholder="Dont Know Yet">
-            </div>
-        </div>
-
-        <div class="row">
-            <label for="dueDate" class="col-lg-2 control-label">Expected Due Date</label>
-
-            <div class="col-lg-2">
-                <input type="date" class="form-control" name="dueDate" id="dueDate">
-            </div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Start New Baby Pool</h1>
         </div>
     </div>
-    <div class="row">
-    <input type="button" id="saveNewPool" class="btn btn-primary col-lg-2 col-md-offset-2" value="Start Pool"/>
-    </div>
-</form>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//code.jquery.com/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/scripts/common.js"></script>
-<script src="/scripts/newPool.js"></script>
-</body>
-</html>
+    <form class="form-horizontal" id="newPoolForm" action="newPool" method="post">
+        <div class="form-group">
+            <div class="row">
+                <label for="userName" class="col-lg-2 control-label">Your Name</label>
+
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="userName" id="userName" placeholder="Joe Bloggs">
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="emailAdress" class="col-lg-2 control-label">Email</label>
+
+                <div class="col-lg-2">
+                    <input type="email" class="form-control" name="emailAddress" id="emailAdress" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="babyName" class="col-lg-2 control-label">Your Baby's Name</label>
+
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="babyName" id="babyName" placeholder="Dont Know Yet">
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="dueDate" class="col-lg-2 control-label">Expected Due Date</label>
+
+                <div class="col-lg-2">
+                    <input type="date" class="form-control" name="dueDate" id="dueDate">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="button" id="saveNewPool" class="btn btn-primary col-lg-2 col-md-offset-2" value="Start Pool"/>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/newPool.js"></script>
+{% endblock %}
