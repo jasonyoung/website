@@ -45,12 +45,28 @@ var init = function(err, db) {
 
 	// Configure middleware.
 	app.use(express.logger('dev'));	
-	app.use(express.static(__dirname + '/public'));	
 	app.use(express.bodyParser());	
 	app.use(express.cookieParser());
 	app.use(express.session({secret: 'needabettersecretthanthis'}));
 	app.use(passport.initialize());
 	app.use(passport.session());
+	
+	// Custom middleware to make authenticated user available to all views.
+	app.use(function(req, res, next) {
+		res.locals({
+			get user() {
+				return req.user;
+			},
+			isAuthenticated: function() {
+				return req.user != null;
+			}
+		});
+
+		next();
+	});
+
+	app.use(app.router);
+	app.use(express.static(__dirname + '/public'));
 
 	// Setup authentication.
 	authentication(db, passport);

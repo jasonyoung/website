@@ -29,11 +29,11 @@ module.exports = function(db, passport) {
 	};
 
 	var serializeUser = function(user, done) {
-		done(null, user._id.toString());
+		done(null, user.username);
 	};
 
 	var deserializeUser = function(id, done) {
-		accounts.findOne({_id: id}, function(err, user) {
+		accounts.findOne({username: id}, function(err, user) {
 			done(err, user);
 		});
 	};
