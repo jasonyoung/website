@@ -43,21 +43,17 @@ var init = function(err, db) {
 		cache: false
 	});
 
-	// Log request information to the console.
-	app.use(express.logger('dev'));
-
-	// Set location of static resources.
-	app.use(express.static(__dirname + '/public'));
-
-	// Express middleware to populate 'req.body' so we can access POST variables.
-	app.use(express.bodyParser());
-
+	// Configure middleware.
+	app.use(express.logger('dev'));	
+	app.use(express.static(__dirname + '/public'));	
+	app.use(express.bodyParser());	
+	app.use(express.cookieParser());
+	app.use(express.session({secret: 'needabettersecretthanthis'}));
 	app.use(passport.initialize());
+	app.use(passport.session());
 
-	passport.use(new LocalStrategy(authentication(db)));
-	passport.serializeUser(function(user, done) {
-		done(null, user._id.toString());
-	});
+	// Setup authentication.
+	authentication(db, passport);
 
 	// Setup application routes.
 	routes(app, db, passport);

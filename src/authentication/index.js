@@ -1,7 +1,8 @@
-module.exports = function(db) {
+module.exports = function(db, passport) {
+	var LocalStrategy = require('passport-local').Strategy;
 	var accounts = db.collection("accounts");
 
-	return function(username, password, done) {
+	var basicAuthentication = function(username, password, done) {
 		var callback = function(err, user) {
 			if (err) return done(err);
 
@@ -26,4 +27,18 @@ module.exports = function(db) {
 
 		accounts.findOne(query, callback);
 	};
+
+	var serializeUser = function(user, done) {
+		done(null, user._id.toString());
+	};
+
+	var deserializeUser = function(id, done) {
+		accounts.findOne({_id: id}, function(err, user) {
+			done(err, user);
+		});
+	};
+
+	passport.use(new LocalStrategy(basicAuthentication));
+	passport.serializeUser(serializeUser);
+	passport.deserializeUser(deserializeUser);
 };
