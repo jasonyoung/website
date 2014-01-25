@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{ babyName }}</h1>
+        </div>
+    </div>
+
+    <div class="col-lg-offset-2">
+        <h2>Parent Name : {{ parentName }}</h2>
+        <h2>Due Date : {{ dueDate }}</h2>
+    </div>
+{% endblock %}

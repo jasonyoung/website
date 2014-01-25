@@ -29,4 +29,6 @@ module.exports = function(app, db, passport) {
         req.logout();
         res.redirect('/');
     });
+
+    app.get("/pools/:poolName",poolHandler.displayPoolDetailsPage);
 };

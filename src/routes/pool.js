@@ -36,7 +36,7 @@ module.exports = function PoolHandler(db) {
 	};
 
 	this.displayPoolListPage = function(req, res) {
-		pools.find().toArray(function(error, results) {
+		pools.find().toArray(function(err, results) {
 			var createPool = function (data) {
 				return {
 					id : data._id.toString(),
@@ -48,4 +48,12 @@ module.exports = function PoolHandler(db) {
 			res.render('poolList', { "pools" : existingPools });
 		});		
 	};
+
+    this.displayPoolDetailsPage = function(req, res) {
+        var query = {"babyName" : req.params.poolName};
+
+        pools.findOne(query, function(err, pool){
+            res.render("poolDetails", pool);
+        });
+    };
 };

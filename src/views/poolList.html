@@ -9,7 +9,7 @@
         <div class="container">
             <div class="list-group">
                 {% for pool in pools %}
-                    <a href="{{ pool.babyName }}" class="list-group-item">
+                    <a href="/pools/{{ pool.babyName }}" class="list-group-item">
                         {{ pool.babyName }}
                     </a>
                 {% endfor %}
