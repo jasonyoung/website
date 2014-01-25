@@ -26,7 +26,13 @@ module.exports = function PoolHandler(db) {
 	};
 
 	this.displayNewPoolPage = function(req, res) {
-		res.render('newPool');
+
+        if (!req.user)
+        {
+            res.redirect("/signinrequired");
+        }
+
+		res.render("newPool");
 	};
 
 	this.displayJoinPoolPage = function(req, res) {

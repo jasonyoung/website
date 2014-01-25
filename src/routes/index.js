@@ -15,9 +15,13 @@ module.exports = function(app, db, passport) {
 	app.get("/unauthorised", function(req, res) {
 		res.render("unauthorised");
 	});
+    app.get("/signinrequired", function(req, res) {
+        res.render("signInRequired");
+    });
 
-	app.post("/login", passport.authenticate('local', {
-		successRedirect: "/joinpool",
+
+    app.post("/login", passport.authenticate('local', {
+		successRedirect: "/",
 		failureRedirect: "/unauthorised"
 	}));
 
