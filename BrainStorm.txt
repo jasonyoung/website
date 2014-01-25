@@ -1,0 +1,45 @@
+Pages
+------
+
+Home (First Time)
+	Join Pool (Anon)
+		: Name
+		: Email
+		: Name
+	Sign In
+		Home
+			New Pool
+				: Name (Unique)
+				: Owner
+				
+			Pool Directory ( Default Open Pools )
+				: Pool Name
+				: Email
+				: Name					
+	Register
+		: Name
+		: Email
+		: Password
+		
+	Sign Out
+		Home
+			
+		
+Types
+-------
+
+Pool:
+	Id : Guid
+	Name : String
+	Owner : User
+	Members : Users
+	Baby Name (Default: Unknown)
+	Expected Due Date : Date
+	Url : Url
+	Status : ???
+	
+User:
+	Id : Guid
+	Name : String
+	Email : Email
+	Password : String

@@ -10,7 +10,7 @@ module.exports = function(app, db, passport) {
 	app.get("/", siteHandler.displayMainPage);
 	app.get("/newpool", poolHandler.displayNewPoolPage);
 	app.post("/newpool", poolHandler.handleNewPool);
-	app.get("/joinpool", poolHandler.displayJoinPoolPage);
+	app.get("/poollist", poolHandler.displayPoolListPage);
 	app.post("/register", accountHandler.handleNewAccount);
 	app.get("/unauthorised", function(req, res) {
 		res.render("unauthorised");

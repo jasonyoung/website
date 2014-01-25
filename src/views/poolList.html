@@ -3,13 +3,13 @@
 {% block content %}
     <div class="jumbotron">
         <div class="container">
-            <h1>Join an existing Baby Pool</h1>
+            <h1>Existing Baby Pools</h1>
         </div>
 
         <div class="container">
             <div class="list-group">
                 {% for pool in pools %}
-                    <a href="#" class="list-group-item">
+                    <a href="{{ pool.babyName }}" class="list-group-item">
                         {{ pool.babyName }}
                     </a>
                 {% endfor %}
@@ -23,5 +23,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="/scripts/joinPool.js"></script>
+    <script src="/scripts/poolList.js"></script>
 {% endblock %}

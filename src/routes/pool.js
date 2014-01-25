@@ -35,7 +35,7 @@ module.exports = function PoolHandler(db) {
 		res.render("newPool");
 	};
 
-	this.displayJoinPoolPage = function(req, res) {
+	this.displayPoolListPage = function(req, res) {
 		pools.find().toArray(function(error, results) {
 			var createPool = function (data) {
 				return {
@@ -45,7 +45,7 @@ module.exports = function PoolHandler(db) {
 			};
 
 			var existingPools = results.map(createPool);
-			res.render('joinPool', { "pools" : existingPools });
+			res.render('poolList', { "pools" : existingPools });
 		});		
 	};
 };
