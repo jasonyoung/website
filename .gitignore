@@ -19,3 +19,4 @@ Berksfile.lock
 
 #WebStorm Files
 .idea/
+.idea/*.xml

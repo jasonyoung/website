@@ -20,4 +20,9 @@ module.exports = function(app, db, passport) {
 		successRedirect: "/joinpool",
 		failureRedirect: "/unauthorised"
 	}));
+
+    app.get('/logout', function(req, res){
+        req.logout();
+        res.redirect('/');
+    });
 };
