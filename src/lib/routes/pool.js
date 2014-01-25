@@ -1,28 +1,24 @@
+var mongoose = require("mongoose");
+var Pool = mongoose.model("Pool");
+
 module.exports = function PoolHandler(db) {
 	var pools = db.collection('pools');
 
-	this.handleNewPool = function(req, res) {		
-		var newPool = {
-			parentName: req.body.userName,
-			babyName: req.body.babyName,
-			emailAddress: req.body.emailAddress,
-			dueDate: req.body.dueDate
-		};
+	this.handleNewPool = function(req, res) {
+        var pool = new Pool(req.body);
 
-		var options = {
-			safe: true
-		};
+        pool.save(function(err, pool) {
+            if (err) {
+                throw err;
+            }
 
-		var poolCreatedHandler = function(err, docs) {
-			console.log('Inserted:');
-			console.log(docs);
+            console.log('Inserted:');
+            console.log(pool);
 
-			res.json({
-				result: true
-			});
-		};
-
-		pools.insert(newPool, options, poolCreatedHandler);
+            res.json({
+                result: true
+            });
+        });
 	};
 
 	this.displayNewPoolPage = function(req, res) {

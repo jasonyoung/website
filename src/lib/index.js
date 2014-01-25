@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 var swig = require('swig');
 var express = require('express');
 var app = express();
-var routes = require('./routes');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var authentication = require('./authentication');
+var fs = require("fs");
 
 // Function to connect to the database.
 var connectToDB = function(callback) {
@@ -22,21 +22,21 @@ var connectToDB = function(callback) {
             db.close();
         });
 
+        // Bootstrap models
+        var models_path = __dirname + '/models/'
+        fs.readdirSync(models_path).forEach(function (file) {
+            if (~file.indexOf('.js')){
+                console.log('Bootstrapping ' + models_path + file);
+                require(models_path + file);
+            }
+        });
+
         // Invoke the callback, passing the connected db instance.
         process.nextTick(function() {
             callback(null, db)
         });
     });
 };
-
-var Schema = mongoose.Schema;
-
-var poolSchema = new Schema({
-    name:  String,
-    babyName: String,
-    parent:   String,
-    dueDate: { type: Date, default: Date.now }
-});
 
 // Function to initialise application.
 var init = function(err, db) {
@@ -82,6 +82,7 @@ var init = function(err, db) {
     authentication(db, passport);
 
     // Setup application routes.
+    var routes = require('./routes');
     routes(app, db, passport);
 
     app.listen(3000);
